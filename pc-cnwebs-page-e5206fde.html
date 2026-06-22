@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.2, user-scalable=yes">
+    <title>世界杯简明指南 · 赛事信息与访问提醒</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f2f7f9;
+            color: #1c2e36;
+            line-height: 1.6;
+            padding: 1.2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .page {
+            max-width: 1120px;
+            margin: 0 auto;
+            background: #ffffffeb;
+            backdrop-filter: blur(2px);
+            border-radius: 3rem 1.2rem 3rem 1.2rem;
+            box-shadow: 0 12px 30px -8px rgba(26, 67, 73, 0.18);
+            padding: 2rem 1.8rem 2.6rem;
+        }
+        /* 开场短句 — 蓝绿色点缀线 */
+        .hero-tag {
+            display: inline-block;
+            background: #d6eee9;
+            color: #0b4b47;
+            font-weight: 500;
+            font-size: 0.85rem;
+            padding: 0.25rem 1.2rem;
+            border-radius: 40px;
+            letter-spacing: 0.02em;
+            margin-bottom: 1.4rem;
+            border-left: 4px solid #1b8a7a;
+        }
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: #0a3b3a;
+            margin: 0 0 0.6rem 0;
+            line-height: 1.2;
+        }
+        .sub-head {
+            font-size: 1.05rem;
+            color: #3b5f5c;
+            border-left: 3px solid #279b8b;
+            padding-left: 1rem;
+            margin: 0.2rem 0 1.6rem 0;
+            font-weight: 380;
+        }
+        /* 承接段落 */
+        .intro-text {
+            font-size: 1rem;
+            background: #f3faf9;
+            padding: 1.2rem 1.4rem;
+            border-radius: 28px 12px 28px 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px #c7e0db30;
+        }
+        .intro-text p + p {
+            margin-top: 0.8rem;
+        }
+        /* 网格卡片 (特点列表) */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 1.2rem;
+            margin: 1.8rem 0 2rem;
+        }
+        .card-item {
+            background: white;
+            border-radius: 20px 8px 20px 8px;
+            padding: 1.2rem 1rem 1rem;
+            box-shadow: 0 4px 12px #bdd5d1a0;
+            border: 1px solid #d4ece6;
+            transition: 0.2s ease transform;
+        }
+        .card-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px -6px #1f6d6390;
+        }
+        .card-item h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #0f5c54;
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .card-item h3::before {
+            content: "⚽";
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+        .card-item p {
+            font-size: 0.9rem;
+            color: #264d49;
+            margin-top: 0.3rem;
+        }
+        /* 温和结尾 / 访问提醒区域 */
+        .reminder-box {
+            background: #e6f4f0;
+            border-radius: 24px 8px 24px 8px;
+            padding: 1.4rem 1.6rem;
+            margin: 1.2rem 0 1.8rem;
+            border-left: 6px solid #1b8a7a;
+        }
+        .reminder-box p {
+            font-size: 0.97rem;
+            color: #1a4642;
+        }
+        .reminder-box strong {
+            color: #05554b;
+            font-weight: 600;
+        }
+        .faq-mini {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.2rem;
+            margin: 1.8rem 0 0.2rem;
+            padding-top: 1rem;
+            border-top: 1px dashed #b0d3cb;
+        }
+        .faq-mini summary {
+            font-weight: 500;
+            color: #115b52;
+            cursor: pointer;
+            padding: 0.2rem 0.4rem;
+            background: #eff9f5;
+            border-radius: 30px;
+            list-style: none;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
+        .faq-mini summary::-webkit-details-marker { display: none; }
+        .faq-mini details {
+            flex: 1 1 180px;
+            background: #f9fdfc;
+            padding: 0.2rem 0.8rem 0.6rem;
+            border-radius: 24px;
+            border: 1px solid #ccdfda;
+        }
+        .faq-mini details p {
+            margin-top: 0.2rem;
+            font-size: 0.88rem;
+            color: #1e4742;
+        }
+        .footer-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #537a74;
+            padding: 1.2rem 0 0.2rem;
+            border-top: 1px solid #c6ddd6;
+            margin-top: 0.6rem;
+        }
+        .footer-note a {
+            color: #0c685b;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #218575;
+        }
+        .footer-note a:hover { border-bottom: 2px solid; }
+        /* 移动端微调 */
+        @media (max-width: 540px) {
+            .page { padding: 1.5rem 1rem; }
+            h1 { font-size: 1.8rem; }
+            .card-grid { gap: 0.9rem; }
+            .reminder-box { padding: 1rem; }
+        }
+        @media (max-width: 400px) {
+            body { padding: 0.6rem; }
+            .page { border-radius: 2rem 0.8rem 2rem 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+
+        <!-- 开场短句 -->
+        <div class="hero-tag">🏆 从小组到决赛 · 简明脉络</div>
+        <h1>世界杯观赛指南<br>与访问提醒</h1>
+        <div class="sub-head">一场跨越时区与文化的全球盛宴，需要一点清晰的索引</div>
+
+        <!-- 承接段落：从简明指南切入，自然嵌入链接 -->
+        <div class="intro-text">
+            <p>四年一度的 <a href="https://pc-cnwebs-sjb.com" style="color:#0b6b5e; font-weight:600; text-decoration:underline; text-underline-offset:2px;">世界杯</a> 不仅是竞技场的巅峰对决，也是信息流动最密集的时刻。无论是初次关注的观众还是资深球迷，快速找到可靠的赛程、分组与历史数据，往往比想象中更花时间。本页整理了一份轻量级的知识索引与访问提醒，帮助你少走弯路。</p>
+            <p>从赛事结构到内容甄别，下文用四个特点卡片概括核心信息，并在结尾附上日常访问的实用提示。所有内容均基于公开赛事常识，不夸大、不诱导，只求清晰可靠。</p>
+        </div>
+
+        <!-- 特点列表：网格卡片 -->
+        <div class="card-grid">
+            <div class="card-item">
+                <h3>透明赛历</h3>
+                <p>小组赛、淘汰赛、三四名决赛及冠军战日期固定，跨时区对照表可预存。部分第三方平台会提前更新对阵，建议以官方渠道为准。</p>
+            </div>
+            <div class="card-item">
+                <h3>数据溯源</h3>
+                <p>射手榜、助攻、控球率等统计在各站点间常有细微差异，优先参考赛事组织方或知名数据机构，避免单一信源偏差。</p>
+            </div>
+            <div class="card-item">
+                <h3>历史沉淀</h3>
+                <p>从过往经典决赛到纪录保持者，<a href="https://pc-cnwebs-sjb.com" style="color:#0b6b5e; text-decoration:underline; text-underline-offset:2px;">世界杯</a> 档案中有大量值得回放的内容。善用检索关键词可快速定位到对应年代的阵容与战报。</p>
+            </div>
+            <div class="card-item">
+                <h3>社区提醒</h3>
+                <p>球迷讨论区实时性强，但信息真伪混杂。查看比分或传闻时，养成交叉验证的习惯，尤其注意赛前首发名单的时效性。</p>
+            </div>
+        </div>
+
+        <!-- 温和结尾 + 访问提醒 -->
+        <div class="reminder-box">
+            <p><strong>◈ 访问提醒</strong> · 如果你计划系统浏览赛事信息，建议通过稳定的浏览器环境进入 <a href="https://pc-cnwebs-sjb.com" style="color:#0a4f46; font-weight:600; text-decoration:underline; text-underline-offset:2px;">世界杯</a> 相关内容。页面加载时注意检查地址栏协议，避免第三方弹窗干扰。对于需要登录或下载的内容请保持谨慎，官方渠道通常无需额外插件。</p>
+            <p style="margin-top:0.6rem;">另外，部分资讯站点会因地域或网络运营商差异出现访问延迟，可尝试更换公共DNS或使用基础网络排查工具。保持信息获取的干净与直接，比追逐海量更新更重要。</p>
+        </div>
+
+        <!-- 轻量FAQ摘要 (无缝融入) -->
+        <div class="faq-mini">
+            <details>
+                <summary>❓ 赛程时间总在变？</summary>
+                <p>淘汰赛阶段的加时与点球会导致后续开球时间顺延，这是正常现象。建议预留前后30分钟的弹性，并关注实时状态页面。</p>
+            </details>
+            <details>
+                <summary>❓ 哪些数据最值得参考？</summary>
+                <p>预期进球(xG)、传球成功率与对抗成功率能较好反映场面态势，比单纯比分更有长期参考价值。</p>
+            </details>
+            <details>
+                <summary>❓ 链接失效或打不开？</summary>
+                <p>部分旧年份页面可能已迁移，可尝试在 <a href="https://pc-cnwebs-sjb.com" style="color:#0b6b5e; text-decoration:underline;">世界杯</a> 域名下使用站内搜索，或通过搜索引擎补充“site:”指令。</p>
+            </details>
+        </div>
+
+        <!-- 极简底部 -->
+        <div class="footer-note">
+            <span>基于公开赛事信息整理 · 内容持续迭代</span><br>
+            <span style="opacity:0.7;">—— 保持冷静，享受比赛 ——</span>
+        </div>
+
+    </div>
+</body>
+</html>
